@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>공지사항 정보</h2>
+	<p>게시물 번호 : <span id="number"></span> </p>
+	<p>게시물 제목 : <span id="title"></span> </p>
+	<p>게시물 작성부서 : <span id="department"></span> </p>
+	<p>게시물 작성일 : <span id="createDate"></span> </p>
+	<p>게시물 조회수 : <span id="viewCount"></span> </p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$.ajax({
+			url: "http://localhost:8080/webdesign/json/1",
+			dataType: "json",
+			success: function(data) {
+				$("#number").text(data["number"]);
+				$("#title").text(data["title"]);
+				$("#department").text(data["department"]);
+				$("#createDate").text(data["createDate"]);
+				$("#viewCount").text(data["viewCount"]);
+			}
+		});		
+	</script>
+</body>
+</html>

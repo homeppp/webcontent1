@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>이름 : <span id="name"></span> </p>
+	<p>나이: <span id="age"></span> </p>
+	<p>키 : <span id="height"></span> </p>
+	<p>주소 : <span id="addr"></span> </p>
+	
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script>
+		$.ajax({
+			url: "http://localhost:8080/webdesign/json/1",
+			success: function(data) {
+				$("#name").text(data["name"]);
+				$("#age").text(data["age"]);
+				$("#height").text(data["height"]);
+				$("#addr").text(data["addr"]);
+			}
+		});
+
+	</script>
+</body>
+</html>

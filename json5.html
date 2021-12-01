@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>공지사항 정보</h2>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$.ajax({
+			url: "http://localhost:8080/webdesign/json/1",
+			dataType: "json",
+			success: function(data) {
+				for(let i=0; i<data.length; i++) {
+					let dataIndex = data[i]
+					
+					$("body").append(
+						"<div id=\"notice_" + i + "\">" + 
+						"<p class=\"number\">" + dataIndex["number"] + "</p>" +
+						"<p class=\"title\">" + dataIndex["title"] + "</p>" +
+						"<p class=\"department\">" + dataIndex["department"] + "</p>" +
+						"<p class=\"createDate\">" + dataIndex["createDate"] + "</p>" +
+						"<p class=\"viewCount\">" + dataIndex["viewCount"] + "</p>" +
+						"</div><hr>"
+					);
+
+				}
+				
+			}
+		});		
+	</script>
+</body>
+</html>

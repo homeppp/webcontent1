@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insert page title</title>
+    <style type="text/css">
+    	.alert {
+    	color: red;
+    	display: none;
+    	}
+    </style>
+</head>
+<body>
+    <form action="/webdesign/login" method="POST">
+        <div>
+            <label>ID : <input type="text" name="id" id="id" placeholder="아이디"></label>
+            <label>PW : <input type="password" name="pw" id="pw" placeholder="비밀번호"></label>
+            <div class="alert">아이디 또는 비밀번호를 확인하세요.</div>
+
+            <input type="submit" value="로그인">
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $("input[type=submit]").on("click", function(e) {
+        	e.preventDefault();
+        	
+        	let id = $("#id").val();
+        	let pw = $("#pw").val();
+        	
+        	$.ajax({
+        		url: "http://localhost:8080/webdesign/login",
+        		data:"id="+id+"&pw="+pw,
+        		type: "POST",
+        		success: function(data) {
+   					alert("로그인 성공");
+        		},
+        		error: function() {
+        			$(".alert").css("display", "block");
+        			
+        			setTimeout(function() {
+        				$(".alert").css("display", "none");
+        			}, 2000);
+        		}
+        	});
+        });
+    </script>
+</body>
+</html>
